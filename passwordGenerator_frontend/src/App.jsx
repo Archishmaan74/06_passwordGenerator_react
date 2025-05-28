@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [length, setLength] = useState(8);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="w-full max-w-md mx-auto shadow-lg rounded-2xl px-6 py-5 my-10 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-orange-400">
+      <h1 className="text-white text-2xl font-bold text-center mb-6 tracking-wide">
+        🔐 Password Generator
+      </h1>
+      <div className="m-2">
+        <img src="/Pass.png" alt="Lock" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div className="mt-10 flex shadow-inner rounded-xl overflow-hidden mb-6 bg-white/10 backdrop-blur-md">
+        <input
+          type="text"
+          className="w-full py-2 px-4 bg-transparent text-white placeholder-orange-300 outline-none"
+          placeholder="Your secure password"
+          readOnly
+        />
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold transition-colors duration-300">
+          Copy
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-white">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
+          <input
+            type="range"
+            min={6}
+            max={100}
+            value={length}
+            onChange={(e) => setLength(e.target.value)}
+            className="cursor-pointer w-full sm:w-auto"
+          />
+          <label className="text-sm font-medium">Length: {length}</label>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <input type="checkbox" id="numberInput" />
+          <label htmlFor="numberInput" className="cursor-pointer">
+            Include Numbers
+          </label>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <input type="checkbox" id="characterInput" />
+          <label htmlFor="characterInput" className="cursor-pointer">
+            Include Symbols
+          </label>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
