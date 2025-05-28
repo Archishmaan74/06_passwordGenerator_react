@@ -1,8 +1,34 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
   const [length, setLength] = useState(8);
+  const [numberChecked, setNumberChecked] = useState(false);
+  const [symbolChecked, setSymbolChecked] = useState(false);
+  const [password, setPassword] = useState("password");
+
+  const passwordGenerator = useCallback(() => {
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+    if (numberChecked) {
+      str += "0123456789";
+    }
+    if (symbolChecked) {
+      str += "!@#$%^&*-_+=[]{}~`";
+    }
+
+    for (let i = 0; i < length; i++) {
+      let char = Math.floor(Math.random() * str.length + 1);
+      pass += str.charAt(char);
+    }
+
+    setPassword(pass);
+  }, [length, numberChecked, symbolChecked, setPassword]);
+
+  useEffect(() => {
+    passwordGenerator();
+  }, [length, numberChecked, symbolChecked, passwordGenerator]);
 
   return (
     <div className="w-full max-w-md mx-auto shadow-lg rounded-2xl px-6 py-5 my-10 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-orange-400">
@@ -16,7 +42,7 @@ function App() {
         <input
           type="text"
           className="w-full py-2 px-4 bg-transparent text-white placeholder-orange-300 outline-none"
-          placeholder="Your secure password"
+          placeholder={password}
           readOnly
         />
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold transition-colors duration-300">
@@ -38,14 +64,28 @@ function App() {
         </div>
 
         <div className="flex items-center gap-2">
-          <input type="checkbox" id="numberInput" />
+          <input
+            type="checkbox"
+            defaultChecked={numberChecked}
+            id="numberInput"
+            onChange={() => {
+              setNumberChecked((prev) => !prev);
+            }}
+          />
           <label htmlFor="numberInput" className="cursor-pointer">
             Include Numbers
           </label>
         </div>
 
         <div className="flex items-center gap-2">
-          <input type="checkbox" id="characterInput" />
+          <input
+            type="checkbox"
+            defaultChecked={symbolChecked}
+            id="characterInput"
+            onChange={() => {
+              setSymbolChecked((prev) => !prev);
+            }}
+          />
           <label htmlFor="characterInput" className="cursor-pointer">
             Include Symbols
           </label>
