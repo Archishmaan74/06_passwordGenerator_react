@@ -24,7 +24,7 @@ function App() {
     }
 
     setPassword(pass);
-  }, [length, numberChecked, symbolChecked, setPassword]);
+  }, [length, numberChecked, symbolChecked]);
 
   useEffect(() => {
     passwordGenerator();
