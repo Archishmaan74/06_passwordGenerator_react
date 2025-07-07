@@ -47,7 +47,7 @@ function App() {
       <div className="m-2">
         <img src="/Pass.png" alt="Lock" />
       </div>
-      <div className="mt-10 flex shadow-inner rounded-xl overflow-hidden mb-6 bg-white/10 backdrop-blur-md">
+      <div className="mt-10 flex shadow-inner rounded-xl overflow-hidden mb-4 bg-white/10 backdrop-blur-md">
         <input
           type="text"
           value={password}
@@ -65,7 +65,7 @@ function App() {
       </div>
 
       <button
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 ml-32 font-semibold transition-colors duration-300 rounded-full"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 ml-32 mb-2 font-semibold transition-colors duration-300 rounded-full"
         onClick={passwordGenerator}
       >
         New Password
