@@ -64,12 +64,14 @@ function App() {
         </button>
       </div>
 
-      <button
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 ml-32 mb-2 font-semibold transition-colors duration-300 rounded-full"
-        onClick={passwordGenerator}
-      >
-        New Password
-      </button>
+      <div className="flex justify-center mb-4">
+        <button
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 font-semibold transition-colors duration-300 rounded-full"
+          onClick={passwordGenerator}
+        >
+          New Password
+        </button>
+      </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-white">
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
