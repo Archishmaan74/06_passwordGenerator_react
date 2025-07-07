@@ -5,4 +5,6 @@ This React based Password Generator uses useEffect to regenerate the password au
 https://06-password-generator-react.vercel.app/ 
 
 ### Screenshot:
-![Screenshot 2025-05-31 141101](https://github.com/user-attachments/assets/bbc6d716-22f3-494b-9323-9f2833ec87a4)
+![passwordGenerator](https://github.com/user-attachments/assets/1ac7418b-3da4-4cde-9b69-6238f4be25f2)
+
+
